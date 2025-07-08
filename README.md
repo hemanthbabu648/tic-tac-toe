@@ -1,56 +1,103 @@
-# Nano React App Default Javascript Template
+# Tic Tac Toe
 
-The default template project for [nano-react-app](https://github.com/nano-react-app/nano-react-app).
+A simple Tic Tac Toe game built with React and Vite.
 
-- `npm start` — This will spawn a development server with a default port of `5173`.
-- `npm run build` — This will output a production build in the `dist` directory.
-- `npm run preview` — This will run the production build locally with a default port of `5173` (this will not work if you haven't generated the production build yet).
+## Getting Started
 
-## Custom port
+### Installation
 
-You can use the `-p` flag to specify a port for development. To do this, you can either run `npm start` with an additional flag:
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/your-username/tic-tac-toe.git
+   cd tic-tac-toe
+   ```
+
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
+
+### Running the App
+
+Start the development server:
+```sh
+npm start
+```
+The app will be available at [http://localhost:5173](http://localhost:5173).
+
+### Building for Production
+
+To create a production build:
+```sh
+npm run build
+```
+The output will be in the `dist` directory.
+
+### Preview Production Build
+
+To preview the production build locally:
+```sh
+npm run preview
+```
+
+## Project Structure
 
 ```
-npm start -- --port 3000
+src/
+  App.jsx
+  helpers.jsx
+  index.jsx
+  components/
+    GameBoard.jsx
+    SquareBox.jsx
+  styles/
+    root.scss
 ```
 
-Or edit the `start` script directly:
+- Main entry: [`src/index.jsx`](src/index.jsx)
+- App logic: [`src/App.jsx`](src/App.jsx)
+- Game logic helper: [`src/helpers.jsx`](src/helpers.jsx)
+- Board UI: [`src/components/GameBoard.jsx`](src/components/GameBoard.jsx)
+- Square UI: [`src/components/SquareBox.jsx`](src/components/SquareBox.jsx)
+- Styles: [`src/styles/root.scss`](src/styles/root.scss)
 
-```
-vite --port 3000
-```
+## Styling
 
-## Adding styles
-
-You can use CSS files with simple ES2015 `import` statements anywhere in your Javascript:
+Styles are written in SCSS and imported in [`src/App.jsx`](src/App.jsx):
 
 ```js
-import "./index.css";
+import "./styles/root.scss";
 ```
 
-## Babel transforms
+## Game Logic
 
-The Babel preset [babel-preset-nano-react-app](https://github.com/nano-react-app/babel-preset-nano-react-app) is used to support the same transforms that Create React App supports.
+Winner calculation is handled by [`calculateWinner`](src/helpers.jsx).
 
-The Babel configuration lives inside `package.json` and will override an external `.babelrc` file, so if you want to use `.babelrc` remember to delete the `babel` property inside `package.json`.
+## Linting and Formatting
 
+- Lint: `npm run lint`
+- Format: `npm run format`
 
 ## Deploy to GitHub Pages
 
-You can also deploy your project using GitHub pages.
-First install the `gh-pages` [package](https://github.com/tschaub/gh-pages):
+1. Install the `gh-pages` package:
+   ```sh
+   npm i -D gh-pages
+   ```
 
-`npm i -D gh-pages`
+2. Add the following scripts to your `package.json` if not present:
+   ```json
+   "predeploy": "npm run build",
+   "deploy": "gh-pages -d dist"
+   ```
 
-Use the following scripts for deployment:
-
-```js
-"scripts": {
-  "start": "vite",
-  "build": "vite build",
-  "predeploy": "rm -rf dist && vite build",
-  "deploy": "gh-pages -d dist"
-},
-```
+3. Deploy:
+   ```sh
+   npm run deploy
+   ```
 
 Then follow the normal procedure in GitHub Pages and select the `gh-pages` branch.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
